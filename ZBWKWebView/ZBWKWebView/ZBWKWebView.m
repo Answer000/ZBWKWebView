@@ -10,6 +10,7 @@
 
 @interface ZBWKWebView()<WKNavigationDelegate>
 @property (nonatomic,strong) WKWebView *webView;
+
 @end
 
 @implementation ZBWKWebView
@@ -78,7 +79,6 @@
         frame.origin.y = -_headerView.bounds.size.height;
         _headerView.frame = frame;
         if (_isSameColorWithHeaderView) _headerView.backgroundColor = webView.scrollView.backgroundColor;
-        [webView.scrollView addSubview:_headerView];
         webView.scrollView.contentOffset = CGPointMake(0, -_headerView.bounds.size.height);
     }
 }
@@ -87,6 +87,7 @@
     if ([_wkNavigationDelegate respondsToSelector:@selector(webView:didFinishNavigation:)]) {
         [_wkNavigationDelegate webView:(ZBWKWebView *)webView didFinishNavigation:navigation];
     }
+    if (_headerView) [webView.scrollView addSubview:_headerView];
     if (_footerView) {
         __weak typeof(self) weakSelf = self;
         //延时1s操作
