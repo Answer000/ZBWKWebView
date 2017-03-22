@@ -7,7 +7,7 @@
 
 * 开发中可能会有添加头部视图或尾部视图的需求，但是我们并不能像UITableView和UICollectionView那样便捷的添加头视图或尾视图。
 
-![image](https://github.com/AnswerXu/ZBWKWebView/blob/master/ReadImage/2017-03-21%2019_15_34.gif)
+![image](https://github.com/AnswerXu/ZBWKWebView/blob/master/ReadImage/readImage.gif)
 
 
 ## Usage
