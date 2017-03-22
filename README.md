@@ -11,6 +11,8 @@
 
 
 ## Usage
+  - 在文件中引入头文件：#import "ZBWKWebView.h"
+  - 如需要使用WKNavigationDelegate代理，请使用ZBWKNavigationDelegate设置代理。如果使用WKNavigationDelegate设置代理，则会覆盖之前设置的代理对象，无法添加头部或尾部视图。
 * 设置headerView
 ```Objc
     UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
@@ -47,5 +49,5 @@
     _webView.footerView = footerView;
 ```
      
-- 参考：http://m.blog.csdn.net/article/details?id=53352516
-- 谢谢支持，可能还有很多不完善的地方，期待您的建议！如对您有帮助，请不吝您的Star，您的支持与鼓励是我继续前行的动力。邮箱：zhengbo073017@163.com
+  - [参考](http://m.blog.csdn.net/article/details?id=53352516)
+  - 谢谢支持，可能还有很多不完善的地方，期待您的建议！如对您有帮助，请不吝您的Star，您的支持与鼓励是我继续前行的动力。邮箱：zhengbo073017@163.com
