@@ -6,7 +6,6 @@
 
 * 开发中可能会有添加头部视图或尾部视图的需求，但是我们并不能像UITableView和UICollectionView那样便捷的添加头视图或尾视图。
 
-## 效果图
 ![image](https://github.com/AnswerXu/ZBWKWebView/blob/master/ReadImage/2017-03-21%2019_15_34.gif)
 
 
@@ -48,6 +47,9 @@
     //设置尾部视图
     _webView.footerView = footerView;
 ```
-     
+ # Version
+ - 0.0.1:
+        - 添加headerView和footerView
+ 
  * [参考](http://m.blog.csdn.net/article/details?id=53352516)
  * 谢谢支持，可能还有很多不完善的地方，期待您的建议！如对您有帮助，请不吝您的Star，您的支持与鼓励是我继续前行的动力。邮箱：zhengbo073017@163.com
