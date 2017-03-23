@@ -2,7 +2,7 @@
 
 &nbsp;&nbsp;[![star this repo](http://githubbadges.com/star.svg?user=AnswerXu&repo=ZBWKWebView&style=flat&color=FFE200&background=007ecg)](https://github.com/AnswerXu/ZBWKWebView.git)
 &nbsp;&nbsp;[![fork this repo](http://githubbadges.com/fork.svg?user=AnswerXu&repo=ZBWKWebView&style=flat&color=bbb&background=da5554)](https://github.com/AnswerXu/ZBWKWebView/fork)
-&nbsp;&nbsp;![](https://img.shields.io/badge/platform-iOS-red.svg?style=flat&color=bbb&backround=14D0FF)
+&nbsp;&nbsp;![](https://img.shields.io/badge/platform-iOS-blue.svg?style=flat&color=bbb&backround=14D0FF)
 &nbsp;&nbsp;![](https://img.shields.io/badge/language-object--C-red.svg?style=flat&color=bbb&backround=14D0FF&size=30)
 &nbsp;&nbsp;![](https://img.shields.io/badge/version-0.0.1-red.svg?style=flat&color=bbb&backround=14D0FF&size=30)
 ## Introduce
