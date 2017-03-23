@@ -11,8 +11,10 @@
 
 
 ## Usage
-- cocoapods:  
-	- pod 'ZBWKWebView'
+- cocoapods:   	
+```
+	pod 'ZBWKWebView'
+```	
 	
 - 在文件中引入头文件：#import "ZBWKWebView.h"
 - 如需要使用WKNavigationDelegate代理，请使用ZBWKNavigationDelegate设置代理。如果使用WKNavigationDelegate设置代理，则会覆盖之前设置的代理对象，无法添加头部或尾部视图。
