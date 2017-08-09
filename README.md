@@ -21,15 +21,14 @@
 ```	
 	
 - 在文件中引入头文件：#import "ZBWKWebView.h"
-- 如需要使用WKNavigationDelegate代理，请使用ZBWKNavigationDelegate设置代理。如果使用WKNavigationDelegate设置代理，则会覆盖之前设置的代理对象，无法添加头部或尾部视图。
-- 设置headerView
+- 创建headerView
 ```Objc
     UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
     headerView.backgroundColor = [UIColor redColor];
     UIGraphicsBeginImageContextWithOptions(headerView.bounds.size, NO, 0);
     [headerView drawRect:headerView.bounds];
     NSString *headerStr = @"I am headerView";
-    [headerStr drawAtPoint:CGPointMake(10, headerView.bounds.size.height * 0.5 - 30) withAttributes:@{NSFontAttributeName : [UIFont italicSystemFontOfSize:45], NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [headerStr drawAtPoint:CGPointMake(10, headerView.bounds.size.height * 0.5 - 30) withAttributes:@{NSFontAttributeName : 	[UIFont italicSystemFontOfSize:45], NSForegroundColorAttributeName : [UIColor whiteColor]}];
     UIImage *headerImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     headerView.image = headerImage;
@@ -40,7 +39,7 @@
     _webView.headerView = headerView;
 ```
 
-- 设置footerView
+- 创建footerView
 ```Objc
     UIImageView *footerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
     footerView.backgroundColor = [UIColor yellowColor];
@@ -57,11 +56,27 @@
     //设置尾部视图
     _webView.footerView = footerView;
 ```
+
+- 在代理方法中设置HeaderView和FooterView
+```Objc
+	//页面开始加载时调用
+	- (void)webView:(WKWebView * _Nonnull)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
+    		[_webView setupHeaderViewForWebView:(ZBWKWebView *)webView];
+	}
+	//页面完成加载时调用
+	-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    		[_webView setupFooterViewForWebView:(ZBWKWebView *)webView];
+	}
+```
+
+
 ## Log
 
 - version 0.0.1:
 	- 添加headerView和footerView
-  
+- version 0.0.2:
+	- 删除ZBWKNavigationDelegate代理及其所有方法，添加设置Header和Footer的方法，可分别在"页面开始加载"和"页面完成加载"的系统代理方法中调用
+  
 ## Thanks
  * [参考](http://m.blog.csdn.net/article/details?id=53352516)
  * 谢谢支持，可能还有很多不完善的地方，期待您的建议！如对您有帮助，请不吝您的Star，您的支持与鼓励是我继续前行的动力。邮箱：zhengbo073017@163.com
