@@ -11,45 +11,13 @@
 
 @class ZBWKWebView;
 
-typedef NS_ENUM(NSInteger, ZBWKNavigationActionPolicy) {
-    NavigationActionPolicyCancel,
-    NavigationActionPolicyAllow,
-} API_AVAILABLE(macosx(10.10), ios(8.0));
-
-typedef NS_ENUM(NSInteger, ZBWKNavigationResponsePolicy) {
-    NavigationResponsePolicyCancel,
-    NavigationResponsePolicyAllow,
-} API_AVAILABLE(macosx(10.10), ios(8.0));
-
-@protocol ZBWKNavigationDelegate <NSObject>
-@optional
-/** //在发送请求之前，决定是否跳转 */
-- (void)webView:( ZBWKWebView * _Nonnull )webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(void (^ _Nonnull) (ZBWKNavigationActionPolicy))decisionHandler;
-
-/** 当客户端收到服务器的响应头，可根据navigationResponse相关信息决定是否继续跳转 */
-- (void)webView:(ZBWKWebView * _Nonnull)webView decidePolicyForNavigationResponse:(WKNavigationResponse * _Nonnull)navigationResponse decisionHandler:(void (^ _Nonnull)(ZBWKNavigationResponsePolicy))decisionHandler;
-
-/** 开始加载时调用 */
-- (void)webView:(ZBWKWebView * _Nonnull)webView didStartProvisionalNavigation:(WKNavigation * _Nonnull)navigation;
-
-/** 接收到服务器跳转请求之后调用 */
-- (void)webView:(ZBWKWebView * _Nonnull)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation;
-
-/** 加载失败时调用 */
-- (void)webView:(ZBWKWebView * _Nonnull)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(null_unspecified NSError *)error;
-
-/** 开始返回内容时调用 */
-- (void)webView:(ZBWKWebView * _Nonnull)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation;
-
-/** 加载完成时调用 */
-- (void)webView:(ZBWKWebView * _Nonnull)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation;
-@end
-
-
 @interface ZBWKWebView : WKWebView
 
-/** ZBWKNavigationDelegate */
-@property (nullable, nonatomic, weak) id <ZBWKNavigationDelegate> wkNavigationDelegate;
+/** 在代理方法 (webView: didStartProvisionalNavigation:) 优先中调用 */
+-(void)setupHeaderViewForWebView:(ZBWKWebView * _Nonnull)webView;
+
+/** 在代理方法 (webView: didFinishNavigation:) 优先中调用 */
+-(void)setupFooterViewForWebView:(ZBWKWebView * _Nonnull)webView;
 
 /** headerView */
 @property (nonatomic) UIView *_Null_unspecified headerView;

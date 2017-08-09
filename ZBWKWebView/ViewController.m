@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "ZBWKWebView.h"
 
-@interface ViewController ()
+@interface ViewController ()<UIScrollViewDelegate, WKNavigationDelegate>
 @property (nonatomic,weak) ZBWKWebView *webView;
 @end
 
@@ -20,6 +20,8 @@
     
     ZBWKWebView *webView = [ZBWKWebView webView];
     webView.frame = self.view.bounds;
+    webView.scrollView.delegate = self;
+    webView.navigationDelegate = self;
     [self.view addSubview:webView];
     _webView = webView;
     
@@ -66,5 +68,22 @@
     _webView.isSameColorWithFooterView = NO;
     _webView.footerView = footerView;
 }
+
+#pragma mark-  WKNavigationDelegate
+//页面开始加载时调用
+- (void)webView:(WKWebView * _Nonnull)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
+    [_webView setupHeaderViewForWebView:(ZBWKWebView *)webView];
+}
+//页面完成加载时调用
+-(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [_webView setupFooterViewForWebView:(ZBWKWebView *)webView];
+}
+
+
+#pragma mark-  UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"%f",scrollView.contentOffset.y);
+}
+
 
 @end
